@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Improve global text rendering */
+body {
+  font-feature-settings: "liga" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Better paragraphs */
+.prose p {
+  line-height: 1.75 !important;
+  letter-spacing: 0.01em;
+}
+
+/* Cleaner headings */
+.prose h2, .prose h3 {
+  letter-spacing: -0.02em !important;
+}

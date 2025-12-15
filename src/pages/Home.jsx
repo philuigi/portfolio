@@ -14,25 +14,32 @@ export default function Home() {
     const getSlideWidth = () => {
       const slide = track.children[0];
       const rect = slide.getBoundingClientRect();
-      const styles = window.getComputedStyle(track);
-      const gap = parseInt(styles.gap || 0);
+      const gap = parseInt(window.getComputedStyle(track).gap || 0);
       return rect.width + gap;
+    };
+
+    const getMaxIndex = () => {
+      const slideWidth = getSlideWidth();
+      const containerWidth = track.parentElement.offsetWidth;
+      const visibleSlides = Math.floor(containerWidth / slideWidth);
+      return Math.max(0, track.children.length - visibleSlides);
     };
 
     const update = () => {
       const slideWidth = getSlideWidth();
       track.style.transform = `translateX(-${index * slideWidth}px)`;
+      updateArrows();
     };
 
-    const canGoRight = () => {
-      const slideWidth = getSlideWidth();
-      const totalWidth = slideWidth * track.children.length;
-      const visibleWidth = track.parentElement.offsetWidth;
-      return index * slideWidth + visibleWidth < totalWidth;
+    const updateArrows = () => {
+      const maxIndex = getMaxIndex();
+      prev.style.opacity = index === 0 ? "0.3" : "1";
+      next.style.opacity = index === maxIndex ? "0.3" : "1";
     };
 
     next.onclick = () => {
-      if (canGoRight()) {
+      const maxIndex = getMaxIndex();
+      if (index < maxIndex) {
         index++;
         update();
       }
@@ -44,11 +51,21 @@ export default function Home() {
         update();
       }
     };
+
+    // Recalculate on window resize
+    window.addEventListener("resize", update);
+
+    update(); // initialize
   }, []);
 
   useEffect(() => {
-    const track = document.getElementById("carousel-track");
-    const slides = document.querySelectorAll(".lightbox-trigger");
+    const capstoneSlides = Array.from(
+      document.querySelectorAll(".lightbox-trigger")
+    );
+    const altSlides = Array.from(
+      document.querySelectorAll(".lightbox-trigger-alt")
+    );
+
     const modal = document.getElementById("lightbox-modal");
     const img = document.getElementById("lightbox-img");
 
@@ -57,10 +74,23 @@ export default function Home() {
     const btnPrev = document.getElementById("lightbox-prev");
 
     let currentIndex = 0;
+    let isCapstone = false;
 
-    const openLightbox = (index) => {
+    const openLightbox = (fullSrc, index, capstoneMode) => {
+      isCapstone = capstoneMode;
       currentIndex = index;
-      img.src = slides[index].dataset.full;
+      img.src = fullSrc;
+      updateArrows();
+
+      // Show/hide navigation buttons depending on source
+      if (isCapstone) {
+        btnNext.style.display = "flex";
+        btnPrev.style.display = "flex";
+      } else {
+        btnNext.style.display = "none";
+        btnPrev.style.display = "none";
+      }
+
       modal.classList.remove("hidden");
     };
 
@@ -69,37 +99,45 @@ export default function Home() {
     };
 
     const showNext = () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      img.src = slides[currentIndex].dataset.full;
+      if (!isCapstone) return;
+      if (currentIndex < capstoneSlides.length - 1) {
+        currentIndex++;
+        img.src = capstoneSlides[currentIndex].dataset.full;
+        updateArrows();
+      }
     };
 
     const showPrev = () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      img.src = slides[currentIndex].dataset.full;
+      if (!isCapstone) return;
+      if (currentIndex > 0) {
+        currentIndex--;
+        img.src = capstoneSlides[currentIndex].dataset.full;
+        updateArrows();
+      }
     };
 
-    // Attach click events to images
-    slides.forEach((slide, index) => {
-      slide.addEventListener("click", () => openLightbox(index));
+    const updateArrows = () => {
+      btnPrev.style.opacity = currentIndex === 0 ? "0.3" : "1";
+      btnNext.style.opacity =
+        currentIndex === capstoneSlides.length - 1 ? "0.3" : "1";
+    };
+
+    // Capstone images (with navigation)
+    capstoneSlides.forEach((slide, index) => {
+      slide.onclick = () => openLightbox(slide.dataset.full, index, true);
     });
 
-    btnClose?.addEventListener("click", closeLightbox);
-    btnNext?.addEventListener("click", showNext);
-    btnPrev?.addEventListener("click", showPrev);
+    // Alternating rows images (no navigation)
+    altSlides.forEach((slide) => {
+      slide.onclick = () => openLightbox(slide.dataset.full, 0, false);
+    });
 
-    // Close when clicking outside the image
-    modal?.addEventListener("click", (e) => {
+    btnClose.onclick = closeLightbox;
+    btnNext.onclick = showNext;
+    btnPrev.onclick = showPrev;
+
+    modal.onclick = (e) => {
       if (e.target === modal) closeLightbox();
-    });
-
-    return () => {
-      slides.forEach((slide, index) => {
-        slide.removeEventListener("click", () => openLightbox(index));
-      });
-
-      btnClose?.removeEventListener("click", closeLightbox);
-      btnNext?.removeEventListener("click", showNext);
-      btnPrev?.removeEventListener("click", showPrev);
     };
   }, []);
 
@@ -130,8 +168,9 @@ export default function Home() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-3xl text-neutral-300">
-        Welcome to my digital portfolio, where I showcase my resume, internship
-        learning, academic work, and personal reflections throughout my journey.
+          Welcome to my digital portfolio, where I showcase my resume,
+          internship learning, academic work, and personal reflections
+          throughout my journey.
         </p>
       </section>
 
@@ -303,7 +342,7 @@ export default function Home() {
             },
             {
               title: "EDTech-PAP Event",
-              text: "Ensured participants had a seamless and well-organized registration process for the event. Contributed to updating and refining participant details as needed.",
+              text: "Ensured participants had a seamless and well-organized registration process for the event. Contributed to updating articipant details as needed.",
               img: "1Rst0zUi5M4L8XpyzOwL-LdlZxYYvoCtq",
               reverse: true,
             },
@@ -315,13 +354,14 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* IMAGE */}
                 <div
-                  className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-black border border-neutral-800 shadow-xl hover:border-emerald-500 transition ${
-                    item.reverse ? "md:order-2" : "md:order-1"
-                  }`}
+                  className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-black border border-neutral-800 shadow-xl hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]
+hover:scale-[1.03] transition-all duration-300
+ ${item.reverse ? "md:order-2" : "md:order-1"}`}
                 >
                   <img
                     src={`https://drive.google.com/thumbnail?id=${item.img}&sz=w1600`}
-                    className="absolute inset-0 w-full h-full object-cover transition hover:scale-105"
+                    data-full={`https://lh3.googleusercontent.com/d/${item.img}=w3000`}
+                    className="lightbox-trigger-alt absolute inset-0 w-full h-full object-cover transition hover:scale-105 cursor-pointer"
                   />
                 </div>
 
@@ -377,7 +417,9 @@ export default function Home() {
               return (
                 <div
                   key={index}
-                  className="min-w-[80%] md:min-w-[55%] lg:min-w-[45%] aspect-[16/9] rounded-xl overflow-hidden bg-black border border-neutral-800 shadow-lg hover:border-emerald-500 transition"
+                  className="min-w-[80%] md:min-w-[55%] lg:min-w-[45%] aspect-[16/9] rounded-xl overflow-hidden bg-black border border-neutral-800 shadow-lg hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]
+hover:scale-[1.03] transition-all duration-300
+"
                 >
                   <img
                     src={thumb}
@@ -447,7 +489,7 @@ export default function Home() {
               Smart Farming Solutions for Sustainable Urban Agriculture in Metro
               Manila
             </span>{" "}
-            — a comprehensive capstone research and development project
+            — A comprehensive capstone research and development project
             integrating IoT-driven sensor monitoring, automated crop
             recommendations, weather-based alerts, and a centralized management
             dashboard designed for urban farming environments.
@@ -461,6 +503,126 @@ export default function Home() {
           >
             Open Document →
           </a>
+        </div>
+      </section>
+
+      <div className="h-px w-full bg-neutral-800 my-24"></div>
+
+      <section id="reflections" className="scroll-mt-24">
+        <div className="h-1 w-12 bg-emerald-500 rounded-full mb-4"></div>
+        <h2 className="text-3xl font-semibold text-white mb-2">
+          Reflections on College Life
+        </h2>
+        <p className="text-neutral-400 mb-6">
+          Lessons learned, challenges faced, and personal growth throughout my
+          academic journey.
+        </p>
+
+        <div className="space-y-6">
+          {/* Reflection 1 */}
+          <div
+            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
+    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              {/* Mountain/Challenges Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-7 h-7 text-emerald-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 21l6-8 4 5 5-7 4 10H3z"
+                />
+              </svg>
+
+              <h3 className="text-xl font-semibold text-white">
+                Growth Through Challenges
+              </h3>
+            </div>
+
+            <p className="text-neutral-300 leading-relaxed">
+              I was always encouraged to improve myself, and the difficulties
+              and lessons I learned along the road allowed me to mature,
+              identify my abilities, and gain the confidence I needed to keep
+              going.
+            </p>
+          </div>
+
+          {/* Reflection 2 */}
+          <div
+            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
+    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              {/* Compass/Career Direction Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-7 h-7 text-emerald-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 2a10 10 0 100 20 10 10 0 000-20zm2.5 10.5l-5 2.5 2.5-5 5-2.5-2.5 5z"
+                />
+              </svg>
+
+              <h3 className="text-xl font-semibold text-white">
+                Shaping My Career Direction
+              </h3>
+            </div>
+
+            <p className="text-neutral-300 leading-relaxed">
+              During my time in Information Systems, I came upon a passion for
+              creating simple, user-friendly interfaces while making cautious
+              planning to solve challenges. These encounters helped me decide
+              what kind of developer I want to work as someone who appreciates
+              effective work, usefulness, and clarity.
+            </p>
+          </div>
+
+          {/* Reflection 3 */}
+          <div
+            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
+    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              {/* Forward Arrow / Progress Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-7 h-7 text-emerald-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4v16m0-16l-4 4m4-4l4 4M4 12h16"
+                />
+              </svg>
+
+              <h3 className="text-xl font-semibold text-white">
+                Moving Forward with Confidence
+              </h3>
+            </div>
+
+            <p className="text-neutral-300 leading-relaxed">
+              I'm eager to keep developing and contributing to worthwhile
+              real-world initiatives when I enter the workforce, bringing with
+              me the experiences and lessons that have formed me.
+            </p>
+          </div>
         </div>
       </section>
 

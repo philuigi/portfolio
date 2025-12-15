@@ -39,17 +39,16 @@ export default function DocsLayout({ sections, children }) {
           </a>
 
           <div className="flex items-center gap-4">
-<a
-  href="https://drive.google.com/file/d/1H1rJVa6p_neU360EedrwUHrdtviwodZR/view?usp=drive_link"
-  target="_blank"
-  className="inline-block px-4 py-1.5 text-sm rounded-lg 
+            <a
+              href="https://drive.google.com/file/d/1H1rJVa6p_neU360EedrwUHrdtviwodZR/view?usp=drive_link"
+              target="_blank"
+              className="inline-block px-4 py-1.5 text-sm rounded-lg 
              border border-neutral-700 bg-neutral-900 
              text-neutral-300 hover:border-emerald-500 
              hover:text-emerald-400 transition-colors shadow-sm"
->
-  Resume (PDF)
-</a>
-
+            >
+              Resume (PDF)
+            </a>
 
             {/* HAMBURGER BUTTON (MOBILE) */}
             <button

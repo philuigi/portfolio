@@ -52,10 +52,12 @@ export default function Home() {
       }
     };
 
-    // Recalculate on window resize
     window.addEventListener("resize", update);
+    update();
 
-    update(); // initialize
+    return () => {
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   useEffect(() => {
@@ -174,7 +176,7 @@ export default function Home() {
         </p>
       </section>
 
-      <div className="h-px w-full bg-neutral-800 my-24"></div>
+      <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
       {/* ABOUT ME */}
       <section id="about-me" className="scroll-mt-24">
@@ -233,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="h-px w-full bg-neutral-800 my-24"></div>
+      <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
       {/* INTERNSHIP */}
       <section id="internship" className="scroll-mt-24">
@@ -387,7 +389,7 @@ hover:scale-[1.03] transition-all duration-300
         </div>
       </section>
 
-      <div className="h-px w-full bg-neutral-800 my-24"></div>
+      <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
       {/* CAPSTONE */}
       <section id="capstone" className="scroll-mt-24">
@@ -506,7 +508,7 @@ hover:scale-[1.03] transition-all duration-300
         </div>
       </section>
 
-      <div className="h-px w-full bg-neutral-800 my-24"></div>
+      <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
       <section id="reflections" className="scroll-mt-24">
         <div className="h-1 w-12 bg-emerald-500 rounded-full mb-4"></div>
@@ -682,7 +684,11 @@ hover:scale-[1.03] transition-all duration-300
 
         <img
           id="lightbox-img"
-          className="max-w-[70vw] max-h-[70vh] rounded-lg shadow-2xl object-contain"
+          className="
+  max-w-[95vw] max-h-[80vh]
+  md:max-w-[70vw] md:max-h-[70vh]
+  rounded-lg shadow-2xl object-contain
+"
         />
 
         {/* Next */}

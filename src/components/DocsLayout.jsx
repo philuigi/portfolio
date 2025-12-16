@@ -25,6 +25,26 @@ export default function DocsLayout({ sections, children }) {
     return () => obs.disconnect();
   }, [sections]);
 
+  useEffect(() => {
+    const footer = document.getElementById("contact");
+    if (!footer) return;
+
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          footer.classList.add("animate-fadeIn");
+          footer.classList.remove("opacity-0");
+          footerObserver.disconnect(); // run once
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    footerObserver.observe(footer);
+
+    return () => footerObserver.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-neutral-200">
       {/* HEADER */}
@@ -194,7 +214,7 @@ export default function DocsLayout({ sections, children }) {
       {/* FOOTER */}
       <footer
         id="contact"
-        className="border-t border-neutral-800 relative mt-24 animate-fadeIn opacity-0"
+        className="border-t border-neutral-800 relative mt-24 opacity-0"
       >
         {/* glowing bar */}
         <div className="absolute -top-[1px] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-60 blur-[2px]" />

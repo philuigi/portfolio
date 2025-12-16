@@ -344,7 +344,7 @@ export default function Home() {
             },
             {
               title: "EDTech-PAP Event",
-              text: "Ensured participants had a seamless and well-organized registration process for the event. Contributed to updating articipant details as needed.",
+              text: "Ensured participants had a seamless and well-organized registration process for the event. Contributed to updating participant details as needed.",
               img: "1Rst0zUi5M4L8XpyzOwL-LdlZxYYvoCtq",
               reverse: true,
             },
@@ -391,101 +391,17 @@ hover:scale-[1.03] transition-all duration-300
 
       <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
-      {/* CAPSTONE */}
-      <section id="capstone" className="scroll-mt-24">
-        <div className="h-1 w-12 bg-emerald-500 rounded-full mb-4"></div>
-        <h2 className="text-3xl font-bold text-white tracking-tight">
-          Capstone Project Showcase
-        </h2>
-        <p className="text-neutral-400 mt-1 text-lg">
-          A visual feature highlight of my capstone project.
-        </p>
-
-        {/* Carousel Container */}
-        <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-900/50 border border-neutral-800 p-6 shadow-xl backdrop-blur-sm mt-8">
-          <div
-            id="carousel-track"
-            className="flex gap-6 transition-transform duration-700 ease-out"
-          >
-            {[
-              "1XjHFfkpbE-Hr_q0Kx9VYRnNlWo94z2zy",
-              "1rWNY3LHDLjRjfFGYTtTou9ytWUT4LpxP",
-              "1VLjl38uJHkjCrNfg1v6reVkfkFyynWtN",
-              "1Z1jKD4ZROnEESwXYq9awOCu_DLc4450d",
-              "1HUK6xnccComgxs4EMDyFakxsuITahOrd",
-            ].map((id, index) => {
-              const full = `https://lh3.googleusercontent.com/d/${id}=w3000`;
-              const thumb = `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
-              return (
-                <div
-                  key={index}
-                  className="min-w-[80%] md:min-w-[55%] lg:min-w-[45%] aspect-[16/9] rounded-xl overflow-hidden bg-black border border-neutral-800 shadow-lg hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]
-hover:scale-[1.03] transition-all duration-300
-"
-                >
-                  <img
-                    src={thumb}
-                    data-full={full}
-                    className="lightbox-trigger w-full h-full object-cover hover:scale-105 transition cursor-pointer"
-                  />
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Carousel arrows */}
-          <button
-            id="carousel-prev"
-            className="absolute left-4 top-1/2 -translate-y-1/2 
-  w-9 h-9 flex items-center justify-center
-  text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-
-          <button
-            id="carousel-next"
-            className="absolute right-4 top-1/2 -translate-y-1/2 
-  w-9 h-9 flex items-center justify-center
-  text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Description */}
-        <div className="mt-10 p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-lg backdrop-blur-sm">
+      {/* Description */}
+      <div
+        className="mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8
+  p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-lg backdrop-blur-sm"
+      >
+        {/* LEFT — PROJECT DESCRIPTION */}
+        <div>
           <h3 className="text-white text-2xl font-semibold mb-2">
             Capstone Project
           </h3>
+
           <p className="text-neutral-300 leading-relaxed max-w-4xl">
             <span className="font-semibold text-emerald-400">
               Smart Farming Solutions for Sustainable Urban Agriculture in Metro
@@ -501,12 +417,31 @@ hover:scale-[1.03] transition-all duration-300
             href="https://docs.google.com/document/d/1JROX2M8LmWTzFDmfmpzff7HG2i9gyazN/edit?usp=sharing"
             target="_blank"
             className="inline-flex mt-5 items-center gap-2 px-5 py-3 rounded-xl border border-neutral-700 bg-neutral-900 
-            hover:border-emerald-500 hover:text-emerald-400 transition shadow-lg text-white"
+      hover:border-emerald-500 hover:text-emerald-400 transition shadow-lg text-white"
           >
             Open Document →
           </a>
         </div>
-      </section>
+
+        {/* RIGHT — ROLE & CONTRIBUTION */}
+        <div className="border border-neutral-800 rounded-xl p-5 bg-neutral-900/60">
+          <div className="text-[0.7rem] tracking-[0.2em] uppercase text-emerald-400 mb-2">
+            My Role
+          </div>
+
+          <h4 className="text-white font-semibold text-lg mb-3">
+            Full-Stack Developer
+          </h4>
+
+          <ul className="space-y-2 text-sm text-neutral-300 leading-relaxed">
+            <li>• Contributed to backend development, including database models</li>
+            <li>• Developed and refined system user interfaces</li>
+            <li>• Assisted in backend–frontend integration</li>
+            <li>• Contributed to all chapters of the research paper</li>
+            <li>• Integrated core system features across frontend and backend components</li>
+          </ul>
+        </div>
+      </div>
 
       <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 

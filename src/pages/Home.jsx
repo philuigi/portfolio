@@ -410,11 +410,14 @@ hover:scale-[1.03] transition-all duration-300
             className="flex gap-6 transition-transform duration-700 ease-out"
           >
             {[
-              "1XjHFfkpbE-Hr_q0Kx9VYRnNlWo94z2zy",
-              "1rWNY3LHDLjRjfFGYTtTou9ytWUT4LpxP",
-              "1VLjl38uJHkjCrNfg1v6reVkfkFyynWtN",
-              "1Z1jKD4ZROnEESwXYq9awOCu_DLc4450d",
               "1HUK6xnccComgxs4EMDyFakxsuITahOrd",
+              "1XjHFfkpbE-Hr_q0Kx9VYRnNlWo94z2zy",
+              "1EtdQaC7T0xZ5FjZNqY-DXotKiWvfA2CI",
+              "1T5OwvmOJoyG8Xw5URnste5oCp9qRJIFt",
+              "1TSlie_KkCenhmJuttDSml_zDQ1tFBb4i",
+              "1Z1jKD4ZROnEESwXYq9awOCu_DLc4450d",
+              "1VLjl38uJHkjCrNfg1v6reVkfkFyynWtN",
+              "1rWNY3LHDLjRjfFGYTtTou9ytWUT4LpxP",
             ].map((id, index) => {
               const full = `https://lh3.googleusercontent.com/d/${id}=w3000`;
               const thumb = `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;

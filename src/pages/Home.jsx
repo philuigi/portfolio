@@ -147,7 +147,7 @@ export default function Home() {
     <DocsLayout
       sections={[
         { id: "about-me", label: "About Me" },
-        { id: "internship", label: "Internship Learning" },
+        { id: "internship", label: "Internship Experience" },
         { id: "capstone", label: "Capstone Project Showcase" },
         { id: "reflections", label: "Reflections on College Life" },
       ]}
@@ -241,7 +241,7 @@ export default function Home() {
       <section id="internship" className="scroll-mt-24">
         <div className="h-1 w-12 bg-emerald-500 rounded-full mb-4"></div>
         <h2 className="text-3xl font-semibold text-white mb-4">
-          Internship Learning
+          Internship Experience
         </h2>
 
         {/* Internship Role + Details */}
@@ -392,56 +392,68 @@ hover:scale-[1.03] transition-all duration-300
       <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
       {/* Description */}
-      <div
-        className="mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8
+      <section id="capstone" className="scroll-mt-24">
+        <div
+          className="mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8
   p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-lg backdrop-blur-sm"
-      >
-        {/* LEFT — PROJECT DESCRIPTION */}
-        <div>
-          <h3 className="text-white text-2xl font-semibold mb-2">
-            Capstone Project
-          </h3>
+        >
+          {/* LEFT — PROJECT DESCRIPTION */}
+          <div>
+            <h3 className="text-white text-2xl font-semibold mb-2">
+              Capstone Project
+            </h3>
 
-          <p className="text-neutral-300 leading-relaxed max-w-4xl">
-            <span className="font-semibold text-emerald-400">
-              Smart Farming Solutions for Sustainable Urban Agriculture in Metro
-              Manila
-            </span>{" "}
-            — A comprehensive capstone research and development project
-            integrating IoT-driven sensor monitoring, automated crop
-            recommendations, weather-based alerts, and a centralized management
-            dashboard designed for urban farming environments.
-          </p>
+            <p className="text-neutral-300 leading-relaxed max-w-4xl">
+              <span className="font-semibold text-emerald-400">
+                Smart Farming Solutions for Sustainable Urban Agriculture in
+                Metro Manila
+              </span>{" "}
+              — A comprehensive capstone research and development project
+              integrating IoT-driven sensor monitoring, automated crop
+              recommendations, weather-based alerts, and a centralized
+              management dashboard designed for urban farming environments.
+            </p>
 
-          <a
-            href="https://docs.google.com/document/d/1JROX2M8LmWTzFDmfmpzff7HG2i9gyazN/edit?usp=sharing"
-            target="_blank"
-            className="inline-flex mt-5 items-center gap-2 px-5 py-3 rounded-xl border border-neutral-700 bg-neutral-900 
+            <a
+              href="https://docs.google.com/document/d/1JROX2M8LmWTzFDmfmpzff7HG2i9gyazN/edit?usp=sharing"
+              target="_blank"
+              className="inline-flex mt-5 items-center gap-2 px-5 py-3 rounded-xl border border-neutral-700 bg-neutral-900 
       hover:border-emerald-500 hover:text-emerald-400 transition shadow-lg text-white"
-          >
-            Open Document →
-          </a>
-        </div>
-
-        {/* RIGHT — ROLE & CONTRIBUTION */}
-        <div className="border border-neutral-800 rounded-xl p-5 bg-neutral-900/60">
-          <div className="text-[0.7rem] tracking-[0.2em] uppercase text-emerald-400 mb-2">
-            My Role
+            >
+              Open Document →
+            </a>
           </div>
 
-          <h4 className="text-white font-semibold text-lg mb-3">
-            Full-Stack Developer
-          </h4>
+          {/* RIGHT — ROLE & CONTRIBUTION */}
+          <div className="relative rounded-xl p-5 bg-neutral-900/60 border border-neutral-800">
+            <div
+              className="absolute -top-[1px] left-0 w-full h-[2px]
+    bg-gradient-to-r from-transparent via-emerald-500 to-transparent
+    opacity-60 blur-[2px]"
+            />
 
-          <ul className="space-y-2 text-sm text-neutral-300 leading-relaxed">
-            <li>• Contributed to backend development, including database models</li>
-            <li>• Developed and refined system user interfaces</li>
-            <li>• Assisted in backend–frontend integration</li>
-            <li>• Contributed to all chapters of the research paper</li>
-            <li>• Integrated core system features across frontend and backend components</li>
-          </ul>
+            <div className="text-[0.7rem] tracking-[0.2em] uppercase text-emerald-400 mb-2">
+              My Role
+            </div>
+
+            <h4 className="text-white font-semibold text-lg mb-3">
+              Full-Stack Developer
+            </h4>
+
+            <ul className="space-y-2 text-sm text-neutral-300 leading-relaxed">
+              <li>
+                • Contributed to backend development, including database-related
+                tasks
+              </li>
+              <li>• Developed and refined system user interfaces</li>
+              <li>
+                • Assisted with frontend–backend integration of core features
+              </li>
+              <li>• Contributed to all chapters of the research paper</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
 
       <div className="h-px w-full bg-neutral-800 my-16 md:my-24"></div>
 
@@ -457,10 +469,13 @@ hover:scale-[1.03] transition-all duration-300
 
         <div className="space-y-6">
           {/* Reflection 1 */}
-          <div
-            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
-    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
-          >
+          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+            <div
+              className="absolute -top-[1px] left-0 w-full h-[2px]
+    bg-gradient-to-r from-transparent via-emerald-500 to-transparent
+    opacity-50 blur-[2px]"
+            />
+
             <div className="flex items-center gap-3 mb-2">
               {/* Mountain/Challenges Icon */}
               <svg
@@ -492,10 +507,13 @@ hover:scale-[1.03] transition-all duration-300
           </div>
 
           {/* Reflection 2 */}
-          <div
-            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
-    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
-          >
+          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+            <div
+              className="absolute -top-[1px] left-0 w-full h-[2px]
+    bg-gradient-to-r from-transparent via-emerald-500 to-transparent
+    opacity-50 blur-[2px]"
+            />
+
             <div className="flex items-center gap-3 mb-2">
               {/* Compass/Career Direction Icon */}
               <svg
@@ -528,10 +546,13 @@ hover:scale-[1.03] transition-all duration-300
           </div>
 
           {/* Reflection 3 */}
-          <div
-            className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md 
-    hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] transition"
-          >
+          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+            <div
+              className="absolute -top-[1px] left-0 w-full h-[2px]
+    bg-gradient-to-r from-transparent via-emerald-500 to-transparent
+    opacity-50 blur-[2px]"
+            />
+
             <div className="flex items-center gap-3 mb-2">
               {/* Forward Arrow / Progress Icon */}
               <svg

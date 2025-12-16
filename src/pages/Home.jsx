@@ -293,7 +293,7 @@ export default function Home() {
                   d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25M3 18.75h18M3 18.75A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75"
                 />
               </svg>
-              <span>August 2025 – December 2025</span>
+              <span>September 2025 – December 2025</span>
             </div>
           </div>
         </div>

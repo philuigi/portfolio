@@ -52,7 +52,7 @@ export default function DocsLayout({ sections, children }) {
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           {/* BRAND */}
           <a
-            href="/"
+            href="/portfolio/"
             className="font-semibold text-lg text-white hover:text-emerald-400 transition-colors"
           >
             My Digital Portfolio

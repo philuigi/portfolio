@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  margin: 0;
+  background-color: #000;
+}
+
 /* Improve global text rendering */
 body {
   font-feature-settings: "liga" 1, "kern" 1;

@@ -1,5 +1,15 @@
 import DocsLayout from "../components/DocsLayout";
 import { useEffect } from "react";
+import {
+  HiOutlineTrendingUp,
+  HiOutlineMap,
+  HiOutlineArrowUp,
+  HiOutlineLocationMarker,
+  HiOutlineCalendar,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiOutlineX,
+} from "react-icons/hi";
 
 export default function Home() {
   useEffect(() => {
@@ -62,10 +72,10 @@ export default function Home() {
 
   useEffect(() => {
     const capstoneSlides = Array.from(
-      document.querySelectorAll(".lightbox-trigger")
+      document.querySelectorAll(".lightbox-trigger"),
     );
     const altSlides = Array.from(
-      document.querySelectorAll(".lightbox-trigger-alt")
+      document.querySelectorAll(".lightbox-trigger-alt"),
     );
 
     const modal = document.getElementById("lightbox-modal");
@@ -255,44 +265,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-neutral-400 text-[0.95rem]">
             {/* Location */}
             <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-emerald-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                />
-              </svg>
+              <HiOutlineLocationMarker className="w-4 h-4 text-emerald-400" />
               <span>Makati City</span>
             </div>
 
             {/* Calendar */}
             <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-emerald-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25M3 18.75h18M3 18.75A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75"
-                />
-              </svg>
+              <HiOutlineCalendar className="w-4 h-4 text-emerald-400" />
               <span>September 2025 – December 2025</span>
             </div>
           </div>
@@ -451,20 +430,7 @@ hover:scale-[1.03] transition-all duration-300
         text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
         hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
+            <HiOutlineChevronLeft className="w-5 h-5" />
           </button>
 
           <button
@@ -474,20 +440,7 @@ hover:scale-[1.03] transition-all duration-300
         text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
         hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <HiOutlineChevronRight className="w-5 h-5" />
           </button>
         </div>
 
@@ -580,20 +533,7 @@ hover:scale-[1.03] transition-all duration-300
 
             <div className="flex items-center gap-3 mb-2">
               {/* Mountain/Challenges Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-7 h-7 text-emerald-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 21l6-8 4 5 5-7 4 10H3z"
-                />
-              </svg>
+              <HiOutlineTrendingUp className="w-7 h-7 text-emerald-400" />
 
               <h3 className="text-xl font-semibold text-white">
                 Growth Through Challenges
@@ -618,20 +558,7 @@ hover:scale-[1.03] transition-all duration-300
 
             <div className="flex items-center gap-3 mb-2">
               {/* Compass/Career Direction Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-7 h-7 text-emerald-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 2a10 10 0 100 20 10 10 0 000-20zm2.5 10.5l-5 2.5 2.5-5 5-2.5-2.5 5z"
-                />
-              </svg>
+              <HiOutlineMap className="w-7 h-7 text-emerald-400" />
 
               <h3 className="text-xl font-semibold text-white">
                 Shaping My Career Direction
@@ -657,20 +584,7 @@ hover:scale-[1.03] transition-all duration-300
 
             <div className="flex items-center gap-3 mb-2">
               {/* Forward Arrow / Progress Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-7 h-7 text-emerald-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4v16m0-16l-4 4m4-4l4 4M4 12h16"
-                />
-              </svg>
+              <HiOutlineArrowUp className="w-7 h-7 text-emerald-400" />
 
               <h3 className="text-xl font-semibold text-white">
                 Moving Forward with Confidence
@@ -700,20 +614,7 @@ hover:scale-[1.03] transition-all duration-300
   text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 
   hover:text-emerald-400 transition"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <HiOutlineX className="w-6 h-6" />
         </button>
 
         {/* Prev */}
@@ -724,20 +625,7 @@ hover:scale-[1.03] transition-all duration-300
   text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 
   hover:text-emerald-400 transition"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
+          <HiOutlineChevronLeft className="w-6 h-6" />
         </button>
 
         <img
@@ -757,20 +645,7 @@ hover:scale-[1.03] transition-all duration-300
   text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 
   hover:text-emerald-400 transition"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          <HiOutlineChevronRight className="w-6 h-6" />
         </button>
       </div>
     </DocsLayout>

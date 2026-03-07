@@ -198,7 +198,7 @@ export default function Home() {
           <div className="md:col-span-3 flex justify-center md:justify-start">
             <div className="relative w-[15rem] md:w-[16rem] aspect-[3/4] overflow-hidden rounded-3xl ring-1 ring-neutral-800 shadow-xl transition-all duration-300 hover:ring-emerald-500 hover:scale-[1.03]">
               <img
-                src="https://drive.google.com/thumbnail?id=1PGou55ka28wmOofdW83IwogRkF8K8aMn&sz=w1600"
+                src="https://drive.google.com/thumbnail?id=1eAYrQinwg47cU9r0BuWKmKZ0TwRA-mIE&sz=w1600"
                 className="absolute inset-0 h-full w-full object-cover object-top"
               />
             </div>

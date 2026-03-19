@@ -229,9 +229,9 @@ export default function Home() {
               {[
                 "Full-Stack Development",
                 "Laravel + Inertia",
+                "Python/Django",
                 "React",
                 "Tailwind",
-                "Python/Django",
               ].map((b) => (
                 <span
                   key={b}

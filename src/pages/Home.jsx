@@ -227,7 +227,7 @@ export default function Home() {
             {/* SKILLS */}
             <div className="mt-6 flex flex-wrap gap-3">
               {[
-                "Front-end",
+                "Full-Stack Development",
                 "Laravel + Inertia",
                 "React",
                 "Tailwind",

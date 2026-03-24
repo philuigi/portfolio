@@ -60,7 +60,7 @@ export default function DocsLayout({ sections, children }) {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://drive.google.com/file/d/1qxhvk6jiVV8VacQWSLikqlfBGCnuqCge/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1CmFCihzZWvaCYbnHPXMOJgDVWXxZMxu0/view?usp=drive_link"
               target="_blank"
               className="inline-block px-4 py-1.5 text-sm rounded-lg 
              border border-neutral-700 bg-neutral-900 

@@ -14,7 +14,7 @@ export default function DocsLayout({ sections, children }) {
         entries.forEach((e) => {
           if (e.isIntersecting) setActive(e.target.id);
         }),
-      { rootMargin: "-40% 0px -40% 0px" }
+      { rootMargin: "-40% 0px -40% 0px" },
     );
 
     sections.forEach(({ id }) => {
@@ -37,7 +37,7 @@ export default function DocsLayout({ sections, children }) {
           footerObserver.disconnect(); // run once
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     footerObserver.observe(footer);
@@ -182,7 +182,7 @@ export default function DocsLayout({ sections, children }) {
                         "block px-3 py-2 rounded-md transition-all duration-200 border-l-2",
                         active === s.id
                           ? "border-emerald-500 bg-neutral-900 text-emerald-400 font-semibold shadow-[inset_0_0_10px_rgba(16,185,129,0.15)]"
-                          : "border-transparent text-neutral-400 hover:text-emerald-300 hover:bg-neutral-900/40 hover:border-emerald-500/40"
+                          : "border-transparent text-neutral-400 hover:text-emerald-300 hover:bg-neutral-900/40 hover:border-emerald-500/40",
                       )}
                     >
                       {s.label}
@@ -299,6 +299,22 @@ export default function DocsLayout({ sections, children }) {
                   1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 
                   1.93-.01 2.19 0 .21.15.45.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"
                   />
+                </svg>
+              </a>
+
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/philip-garcia-0ba671380"
+                target="_blank"
+                className="p-2 rounded-full bg-neutral-900 border border-neutral-800 hover:border-emerald-500 hover:text-emerald-400 transition flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.783 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.357c.683-1.086 2.051-1.857 3.5-1.857 2.481 0 4.5 2.019 4.5 4.5v6z" />
                 </svg>
               </a>
             </div>

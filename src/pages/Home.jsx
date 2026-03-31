@@ -209,18 +209,20 @@ export default function Home() {
             <div className="space-y-5 text-neutral-300 leading-relaxed text-lg md:text-xl">
               <p>
                 I’m Philip Luigi Garcia, a BS Information Systems student who
-                loves building clean, modern, and efficient web interfaces.
+                enjoys building clean, modern, and efficient web applications.
               </p>
 
               <p>
-                I aspire to learn new frameworks and tools that help me grow as
-                a developer.
+                I have an interest in full-stack development, working with both
+                front-end interfaces and back-end systems to create functional
+                and user-friendly solutions.
               </p>
 
               <p>
-                I enjoy creating intuitive user interfaces, crafting smooth user
-                experiences, and bringing concepts to life. I’m inspired to keep
-                learning, developing, and improving every step of the way.
+                I enjoy designing intuitive user experiences, developing
+                responsive interfaces, and bringing ideas to life through code.
+                I’m continuously learning new tools and frameworks to improve
+                and grow as a developer.
               </p>
             </div>
 

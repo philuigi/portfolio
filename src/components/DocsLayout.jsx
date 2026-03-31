@@ -304,7 +304,7 @@ export default function DocsLayout({ sections, children }) {
 
               {/* LINKEDIN */}
               <a
-                href="https://www.linkedin.com/in/philip-garcia-0ba671380"
+                href="https://www.linkedin.com/in/philip-luigi-garcia-0ba671380"
                 target="_blank"
                 className="p-2 rounded-full bg-neutral-900 border border-neutral-800 hover:border-emerald-500 hover:text-emerald-400 transition flex items-center justify-center"
               >
@@ -317,6 +317,7 @@ export default function DocsLayout({ sections, children }) {
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.783 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.357c.683-1.086 2.051-1.857 3.5-1.857 2.481 0 4.5 2.019 4.5 4.5v6z" />
                 </svg>
               </a>
+              
             </div>
           </div>
         </div>

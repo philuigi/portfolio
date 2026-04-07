@@ -80,6 +80,7 @@ export default function Home() {
 
     const modal = document.getElementById("lightbox-modal");
     const img = document.getElementById("lightbox-img");
+    const desc = document.getElementById("lightbox-desc");
 
     const btnClose = document.getElementById("lightbox-close");
     const btnNext = document.getElementById("lightbox-next");
@@ -88,13 +89,60 @@ export default function Home() {
     let currentIndex = 0;
     let isCapstone = false;
 
-    const openLightbox = (fullSrc, index, capstoneMode) => {
+    const updateLightboxContent = () => {
+      const slide = capstoneSlides[currentIndex];
+      if (!slide) return;
+
+      const description = slide.alt || "";
+      const [title, text] = description.split(" - ");
+
+      img.src = slide.dataset.full;
+
+      if (!description.trim()) {
+        desc.innerHTML = "";
+        desc.classList.add("hidden");
+      } else {
+        desc.classList.remove("hidden");
+
+        desc.innerHTML = `
+      <div class="flex flex-col items-center text-center gap-1 md:gap-2">
+        <span class="text-emerald-400 font-semibold text-sm md:text-base tracking-wide">
+          ${title || ""}
+        </span>
+        <span class="text-neutral-300 text-xs md:text-sm leading-relaxed max-w-[90%] md:max-w-xl">
+          ${text || ""}
+        </span>
+      </div>
+    `;
+      }
+
+      updateArrows();
+    };
+
+    const openLightbox = (fullSrc, index, capstoneMode, description) => {
       isCapstone = capstoneMode;
       currentIndex = index;
-      img.src = fullSrc;
-      updateArrows();
 
-      // Show/hide navigation buttons depending on source
+      if (isCapstone) {
+        updateLightboxContent();
+      } else {
+        img.src = fullSrc;
+
+        if (!description || !description.trim()) {
+          desc.innerHTML = "";
+          desc.classList.add("hidden");
+        } else {
+          desc.classList.remove("hidden");
+
+          desc.innerHTML = `
+      <div class="text-neutral-300 text-sm md:text-base leading-relaxed text-center">
+        ${description}
+      </div>
+    `;
+        }
+      }
+
+      // Show/hide navigation buttons
       if (isCapstone) {
         btnNext.style.display = "flex";
         btnPrev.style.display = "flex";
@@ -104,18 +152,21 @@ export default function Home() {
       }
 
       modal.classList.remove("hidden");
+
+      document.body.style.overflow = "hidden";
     };
 
     const closeLightbox = () => {
       modal.classList.add("hidden");
+
+      document.body.style.overflow = "auto";
     };
 
     const showNext = () => {
       if (!isCapstone) return;
       if (currentIndex < capstoneSlides.length - 1) {
         currentIndex++;
-        img.src = capstoneSlides[currentIndex].dataset.full;
-        updateArrows();
+        updateLightboxContent();
       }
     };
 
@@ -123,8 +174,7 @@ export default function Home() {
       if (!isCapstone) return;
       if (currentIndex > 0) {
         currentIndex--;
-        img.src = capstoneSlides[currentIndex].dataset.full;
-        updateArrows();
+        updateLightboxContent();
       }
     };
 
@@ -134,14 +184,14 @@ export default function Home() {
         currentIndex === capstoneSlides.length - 1 ? "0.3" : "1";
     };
 
-    // Capstone images (with navigation)
     capstoneSlides.forEach((slide, index) => {
-      slide.onclick = () => openLightbox(slide.dataset.full, index, true);
+      slide.onclick = () =>
+        openLightbox(slide.dataset.full, index, true, slide.alt);
     });
 
-    // Alternating rows images (no navigation)
     altSlides.forEach((slide) => {
-      slide.onclick = () => openLightbox(slide.dataset.full, 0, false);
+      slide.onclick = () =>
+        openLightbox(slide.dataset.full, 0, false, slide.alt);
     });
 
     btnClose.onclick = closeLightbox;
@@ -234,6 +284,8 @@ export default function Home() {
                 "Python/Django",
                 "React",
                 "Tailwind",
+                "TypeScript",
+                "Next.js",
               ].map((b) => (
                 <span
                   key={b}
@@ -286,8 +338,8 @@ export default function Home() {
               <span className="text-white font-medium">
                 CRM UI Development:
               </span>{" "}
-              Worked on improving interface layouts, building components, and
-              fixing UI issues.
+              Improved CRM UI layout by refining components and structure,
+              resulting in clearer navigation and reduced user confusion.
             </li>
             <li>
               <span className="text-white font-medium">Event Hub Module:</span>{" "}
@@ -380,10 +432,6 @@ hover:scale-[1.03] transition-all duration-300
           Capstone Project Showcase
         </h2>
 
-        <p className="text-neutral-400 mt-1 text-lg">
-          A visual feature highlight of my capstone project.
-        </p>
-
         {/* CAROUSEL */}
         <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-900/50 border border-neutral-800 p-6 shadow-xl backdrop-blur-sm mt-8">
           <div
@@ -391,34 +439,83 @@ hover:scale-[1.03] transition-all duration-300
             className="flex gap-6 transition-transform duration-700 ease-out"
           >
             {[
-              "1HUK6xnccComgxs4EMDyFakxsuITahOrd",
-              "1XjHFfkpbE-Hr_q0Kx9VYRnNlWo94z2zy",
-              "1EtdQaC7T0xZ5FjZNqY-DXotKiWvfA2CI",
-              "1T5OwvmOJoyG8Xw5URnste5oCp9qRJIFt",
-              "1TSlie_KkCenhmJuttDSml_zDQ1tFBb4i",
-              "1Z1jKD4ZROnEESwXYq9awOCu_DLc4450d",
-              "1VLjl38uJHkjCrNfg1v6reVkfkFyynWtN",
-              "1rWNY3LHDLjRjfFGYTtTou9ytWUT4LpxP",
-            ].map((id, index) => {
-              const full = `https://lh3.googleusercontent.com/d/${id}=w3000`;
-              const thumb = `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
+              {
+                id: "1HUK6xnccComgxs4EMDyFakxsuITahOrd",
+                title: "Home",
+                desc: "The dashboard features a clean sidebar navigation, a central plant data card with real-time metrics (soil moisture, temperature, humidity, light, battery), and clear alerts for offline status.",
+              },
+              {
+                id: "1XjHFfkpbE-Hr_q0Kx9VYRnNlWo94z2zy",
+                title: "Device Management",
+                desc: "This section displays connected farming devices with status, battery levels, and update logs for soil, temperature, humidity, and light. Action buttons (edit, delete, history) and an “Add Device” option make management straightforward and efficient.",
+              },
+              {
+                id: "1EtdQaC7T0xZ5FjZNqY-DXotKiWvfA2CI",
+                title: "Sensor History",
+                desc: "Displays average soil, temperature, humidity, and light conditions with ideal ranges, plus irrigation suggestions based on sensor trends.",
+              },
+              {
+                id: "1T5OwvmOJoyG8Xw5URnste5oCp9qRJIFt",
+                title: "Sensor History 2",
+                desc: "A line graph visualizing soil moisture, temperature, humidity, and light readings across dates. It highlights fluctuations and trends, helping users track environmental conditions for better crop management.",
+              },
+              {
+                id: "1TSlie_KkCenhmJuttDSml_zDQ1tFBb4i",
+                title: "Sensor History 3",
+                desc: "Uses average sensor data to suggest suitable plants with crop scores and suitability percentages. It helps users match environmental conditions to optimal crops for smarter farming decisions.",
+              },
+              {
+                id: "1Z1jKD4ZROnEESwXYq9awOCu_DLc4450d",
+                title: "Plant Database",
+                desc: "Searchable and filterable plant database with seasonal options and visual entries, enabling quick identification and informed farming decisions.",
+              },
+              {
+                id: "1VLjl38uJHkjCrNfg1v6reVkfkFyynWtN",
+                title: "Plant Details",
+                desc: "Shows detailed information for each plant, including ideal ranges, cultivation notes, propagation methods, and uses.",
+              },
+              {
+                id: "1rWNY3LHDLjRjfFGYTtTou9ytWUT4LpxP",
+                title: "Forum",
+                desc: "Provides a space for farmers to share experiences, ask questions, and showcase harvests.",
+              },
+            ].map((item, index) => {
+              const full = `https://lh3.googleusercontent.com/d/${item.id}=w3000`;
+              const thumb = `https://drive.google.com/thumbnail?id=${item.id}&sz=w1600`;
 
               return (
                 <div
                   key={index}
                   className="min-w-[80%] md:min-w-[55%] lg:min-w-[45%]
-              aspect-[16/9] rounded-xl overflow-hidden bg-black
-              border border-neutral-800 shadow-lg
-              hover:border-emerald-400
-              hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]
-              hover:scale-[1.03]
-              transition-all duration-300"
+          aspect-[16/9] rounded-xl overflow-hidden bg-black
+          border border-neutral-800 shadow-lg
+          hover:border-emerald-400
+          hover:shadow-[0_0_20px_rgba(52,211,153,0.4)]
+          hover:scale-[1.03]
+          transition-all duration-300 relative"
                 >
                   <img
                     src={thumb}
                     data-full={full}
+                    alt={`${item.title} - ${item.desc}`}
                     className="lightbox-trigger w-full h-full object-cover hover:scale-105 transition cursor-pointer"
                   />
+                  <div
+                    className="
+  absolute bottom-0 left-0 w-full
+  bg-gradient-to-t from-black/80 via-black/50 to-transparent
+  p-4 md:p-5
+"
+                  >
+                    <div className="max-w-[95%] md:max-w-[80%]">
+                      <h4 className="text-white text-sm md:text-base font-semibold leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="text-neutral-300 text-xs md:text-sm mt-1 leading-snug line-clamp-2">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -428,9 +525,9 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-prev"
             className="absolute left-4 top-1/2 -translate-y-1/2
-        w-9 h-9 flex items-center justify-center
-        text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-        hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
+    w-9 h-9 flex items-center justify-center
+    text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
+    hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
             <HiOutlineChevronLeft className="w-5 h-5" />
           </button>
@@ -438,9 +535,9 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-next"
             className="absolute right-4 top-1/2 -translate-y-1/2
-        w-9 h-9 flex items-center justify-center
-        text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-        hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
+    w-9 h-9 flex items-center justify-center
+    text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
+    hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
             <HiOutlineChevronRight className="w-5 h-5" />
           </button>
@@ -608,6 +705,13 @@ hover:scale-[1.03] transition-all duration-300
         className="hidden fixed inset-0 bg-black/90 backdrop-blur-sm z-[9999] 
     flex items-center justify-center p-4"
       >
+        <div
+          id="lightbox-desc"
+          className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2
+    w-[92%] sm:w-[85%] md:w-auto md:max-w-2xl px-4 py-3 md:px-6 md:py-4
+    rounded-2xl bg-gradient-to-t from-black/90 via-black/70 to-black/40
+    backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-center text-white text-sm md:text-base transition-all duration-300"
+        ></div>
         {/* Close */}
         <button
           id="lightbox-close"

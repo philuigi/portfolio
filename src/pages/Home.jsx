@@ -106,10 +106,10 @@ export default function Home() {
 
         desc.innerHTML = `
       <div class="flex flex-col items-center text-center gap-1 md:gap-2">
-        <span class="text-emerald-400 font-semibold text-sm md:text-base tracking-wide">
+        <span class="text-emerald-400 font-semibold text-sm md:text-base tracking-wide pointer-events-none">
           ${title || ""}
         </span>
-        <span class="text-neutral-300 text-xs md:text-sm leading-relaxed max-w-[90%] md:max-w-xl">
+        <span class="text-neutral-300 text-xs md:text-sm leading-relaxed max-w-[90%] md:max-w-xl pointer-events-none">
           ${text || ""}
         </span>
       </div>
@@ -505,13 +505,24 @@ hover:scale-[1.03] transition-all duration-300
   absolute bottom-0 left-0 w-full
   bg-gradient-to-t from-black/80 via-black/50 to-transparent
   p-4 md:p-5
+  pointer-events-none
 "
                   >
                     <div className="max-w-[95%] md:max-w-[80%]">
-                      <h4 className="text-white text-sm md:text-base font-semibold leading-tight">
+                      <h4
+                        className="text-white font-semibold 
+  text-xs sm:text-sm md:text-base lg:text-lg 
+  leading-tight"
+                      >
                         {item.title}
                       </h4>
-                      <p className="text-neutral-300 text-xs md:text-sm mt-1 leading-snug line-clamp-2">
+
+                      <p
+                        className="text-neutral-300 
+  text-[10px] sm:text-xs md:text-sm lg:text-base 
+  mt-1 leading-snug md:leading-relaxed 
+  line-clamp-2"
+                      >
                         {item.desc}
                       </p>
                     </div>

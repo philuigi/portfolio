@@ -52,7 +52,7 @@ export default function Home() {
     };
 
     next.onclick = (e) => {
-      e.currentTarget.blur(); 
+      e.currentTarget.blur();
       const maxIndex = getMaxIndex();
       if (index < maxIndex) {
         index++;
@@ -61,7 +61,7 @@ export default function Home() {
     };
 
     prev.onclick = (e) => {
-      e.currentTarget.blur(); 
+      e.currentTarget.blur();
       if (index > 0) {
         index--;
         update();
@@ -778,24 +778,24 @@ rounded-xl min-h-[44px] text-sm sm:text-base
         <button
           id="lightbox-close"
           className="absolute top-4 right-4
-w-14 h-14 md:w-10 md:h-10
+w-10 h-10 md:w-9 md:h-9
 flex items-center justify-center
 bg-neutral-800/70 rounded-full
 text-neutral-300 hover:text-emerald-400 transition z-50"
         >
-          <HiOutlineX className="w-7 h-7 md:w-5 md:h-5" />
+          <HiOutlineX className="w-5 h-5 md:w-4 md:h-4" />
         </button>
         {/* Prev */}
         <button
           id="lightbox-prev"
           className="absolute left-4 top-1/2 -translate-y-1/2
-w-14 h-14 md:w-10 md:h-10
+w-10 h-10 md:w-9 md:h-9
 flex items-center justify-center
 bg-neutral-800/70 rounded-full shadow-md
 text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500
 hover:text-emerald-400 transition z-50"
         >
-          <HiOutlineChevronLeft className="w-6 h-6" />
+          <HiOutlineChevronLeft className="w-5 h-5 md:w-4 md:h-4" />
         </button>
 
         <img
@@ -811,13 +811,13 @@ hover:text-emerald-400 transition z-50"
         <button
           id="lightbox-next"
           className="absolute right-4 top-1/2 -translate-y-1/2
-w-14 h-14 md:w-10 md:h-10
+w-10 h-10 md:w-9 md:h-9
 flex items-center justify-center
 bg-neutral-800/70 rounded-full shadow-md
 text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500
 hover:text-emerald-400 transition z-50"
         >
-          <HiOutlineChevronRight className="w-6 h-6" />
+          <HiOutlineChevronRight className="w-5 h-5 md:w-4 md:h-4" />
         </button>
       </div>
     </DocsLayout>

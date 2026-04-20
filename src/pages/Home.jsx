@@ -582,7 +582,7 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-prev"
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2
-  w-14 h-14 md:w-10 md:h-10
+  w-10 h-10 md:w-9 md:h-9
   flex items-center justify-center
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
   hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50"
@@ -593,7 +593,7 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-next"
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2
-  w-14 h-14 md:w-10 md:h-10
+  w-10 h-10 md:w-9 md:h-9
   flex items-center justify-center
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
   hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50"

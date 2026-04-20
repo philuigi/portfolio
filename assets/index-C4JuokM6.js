@@ -68,13 +68,15 @@ hover:scale-[1.03] transition-all duration-300
 `,children:h.jsxs("div",{className:"max-w-[95%] md:max-w-[80%]",children:[h.jsx("h4",{className:`text-white font-semibold \r
   text-sm sm:text-base md:text-lg lg:text-xl leading-tight`,children:m.title}),h.jsx("p",{className:`text-neutral-300 \r
   text-xs sm:text-sm md:text-base lg:text-lg \r
-  mt-1 leading-relaxed line-clamp-2`,children:m.desc})]})})]},j)})}),h.jsx("button",{id:"carousel-prev",className:`absolute left-4 top-1/2 -translate-y-1/2\r
-    w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center\r
-    text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
-    hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition`,children:h.jsx(Dd,{className:"w-5 h-5"})}),h.jsx("button",{id:"carousel-next",className:`absolute right-4 top-1/2 -translate-y-1/2\r
-    w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center\r
-    text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
-    hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition`,children:h.jsx(Md,{className:"w-5 h-5"})})]}),h.jsxs("div",{className:`mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8\r
+  mt-1 leading-relaxed line-clamp-2`,children:m.desc})]})})]},j)})}),h.jsx("button",{id:"carousel-prev",className:`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2\r
+  w-12 h-12 sm:w-10 sm:h-10\r
+  flex items-center justify-center\r
+  text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
+  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition`,children:h.jsx(Dd,{className:"w-6 h-6 sm:w-5 sm:h-5"})}),h.jsx("button",{id:"carousel-next",className:`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2\r
+  w-12 h-12 sm:w-10 sm:h-10\r
+  flex items-center justify-center\r
+  text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
+  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition`,children:h.jsx(Md,{className:"w-6 h-6 sm:w-5 sm:h-5"})})]}),h.jsxs("div",{className:`mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8\r
       p-4 sm:p-6 rounded-2xl border border-neutral-800\r
       bg-neutral-900/50 shadow-lg backdrop-blur-sm`,children:[h.jsxs("div",{children:[h.jsx("h3",{className:"text-white text-2xl font-semibold mb-2",children:"Capstone Project"}),h.jsxs("p",{className:"text-neutral-300 leading-relaxed max-w-4xl",children:[h.jsx("span",{className:"font-semibold text-emerald-400",children:"Smart Farming Solutions for Sustainable Urban Agriculture in Metro Manila"})," ","— A comprehensive capstone research and development project integrating IoT-driven sensor monitoring, automated crop recommendations, weather-based alerts, and a centralized management dashboard designed for urban farming environments."]}),h.jsx("a",{href:"https://docs.google.com/document/d/1JROX2M8LmWTzFDmfmpzff7HG2i9gyazN/edit?usp=sharing",target:"_blank",className:`inline-flex mt-5 items-center gap-2 px-6 py-3 sm:px-5 sm:py-3 \r
 rounded-xl min-h-[44px] text-sm sm:text-base\r
@@ -92,10 +94,12 @@ rounded-xl min-h-[44px] text-sm sm:text-base\r
     flex items-center justify-center p-4`,children:[h.jsx("div",{id:"lightbox-desc",className:`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2\r
     w-[92%] sm:w-[85%] md:w-auto md:max-w-2xl px-4 py-3 md:px-6 md:py-4\r
     rounded-2xl bg-gradient-to-t from-black/90 via-black/70 to-black/40\r
-    backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-center text-white text-sm md:text-base transition-all duration-300`}),h.jsx("button",{id:"lightbox-close",className:`absolute top-6 right-6 flex items-center justify-center \r
-  w-10 h-10 bg-neutral-800/70 rounded-full shadow-md\r
-  text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 \r
-  hover:text-emerald-400 transition`,children:h.jsx(Eh,{className:"w-6 h-6"})}),h.jsx("button",{id:"lightbox-prev",className:`absolute left-6 top-1/2 -translate-y-1/2 flex items-center justify-center \r
+    backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-center text-white text-sm md:text-base transition-all duration-300`}),h.jsx("button",{id:"lightbox-close",className:`absolute top-4 right-4 sm:top-6 sm:right-6\r
+  w-12 h-12 sm:w-10 sm:h-10\r
+  flex items-center justify-center\r
+  bg-neutral-800/70 rounded-full shadow-md\r
+  text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500\r
+  hover:text-emerald-400 transition active:scale-95`,children:h.jsx(Eh,{className:"w-6 h-6 sm:w-5 sm:h-5"})}),h.jsx("button",{id:"lightbox-prev",className:`absolute left-6 top-1/2 -translate-y-1/2 flex items-center justify-center \r
   w-10 h-10 bg-neutral-800/70 rounded-full shadow-md\r
   text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 \r
   hover:text-emerald-400 transition`,children:h.jsx(Dd,{className:"w-6 h-6"})}),h.jsx("img",{id:"lightbox-img",className:`\r

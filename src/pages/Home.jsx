@@ -21,6 +21,9 @@ export default function Home() {
 
     let index = 0;
 
+    let startX = 0;
+    let endX = 0;
+
     const getSlideWidth = () => {
       const slide = track.children[0];
       const rect = slide.getBoundingClientRect();
@@ -62,11 +65,45 @@ export default function Home() {
       }
     };
 
+    const onTouchStart = (e) => {
+      startX = e.touches[0].clientX;
+    };
+
+    const onTouchMove = (e) => {
+      endX = e.touches[0].clientX;
+
+      if (Math.abs(startX - endX) > 10) {
+        e.preventDefault();
+      }
+    };
+
+    const onTouchEnd = () => {
+      const diff = startX - endX;
+      const threshold = 50;
+      const maxIndex = getMaxIndex();
+
+      if (diff > threshold && index < maxIndex) {
+        index++;
+        update();
+      } else if (diff < -threshold && index > 0) {
+        index--;
+        update();
+      }
+    };
+
+    track.addEventListener("touchstart", onTouchStart);
+    track.addEventListener("touchmove", onTouchMove, { passive: false });
+    track.addEventListener("touchend", onTouchEnd);
+
     window.addEventListener("resize", update);
     update();
 
     return () => {
       window.removeEventListener("resize", update);
+
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchmove", onTouchMove);
+      track.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
 
@@ -105,15 +142,22 @@ export default function Home() {
         desc.classList.remove("hidden");
 
         desc.innerHTML = `
-      <div class="flex flex-col items-center text-center gap-1 md:gap-2">
-        <span class="text-emerald-400 font-semibold text-sm md:text-base tracking-wide pointer-events-none">
-          ${title || ""}
-        </span>
-        <span class="text-neutral-300 text-xs md:text-sm leading-relaxed max-w-[90%] md:max-w-xl pointer-events-none">
-          ${text || ""}
-        </span>
-      </div>
-    `;
+  <div class="flex flex-col items-center text-center gap-2 md:gap-3 px-2 sm:px-0">
+    
+    <span class="text-emerald-400 font-semibold 
+      text-base sm:text-lg md:text-xl 
+      tracking-wide leading-snug">
+      ${title || ""}
+    </span>
+
+    <span class="text-neutral-300 
+      text-sm sm:text-base md:text-lg 
+      leading-relaxed max-w-[95%] sm:max-w-[90%] md:max-w-xl">
+      ${text || ""}
+    </span>
+
+  </div>
+`;
       }
 
       updateArrows();
@@ -222,7 +266,7 @@ export default function Home() {
                         [background-size:42px_42px]"
         />
 
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
           <span className="text-white">Philip Luigi </span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">
             Garcia
@@ -384,7 +428,7 @@ export default function Home() {
           ].map((item, i) => (
             <div
               key={i}
-              className="border border-neutral-800 bg-neutral-900/40 rounded-2xl p-6 md:p-8"
+              className="border border-neutral-800 bg-neutral-900/40 rounded-2xl p-4 sm:p-6 md:p-8"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* IMAGE */}
@@ -433,7 +477,7 @@ hover:scale-[1.03] transition-all duration-300
         </h2>
 
         {/* CAROUSEL */}
-        <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-900/50 border border-neutral-800 p-6 shadow-xl backdrop-blur-sm mt-8">
+        <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-900/50 border border-neutral-800 p-4 sm:p-6 shadow-xl backdrop-blur-sm mt-8">
           <div
             id="carousel-track"
             className="flex gap-6 transition-transform duration-700 ease-out"
@@ -504,24 +548,22 @@ hover:scale-[1.03] transition-all duration-300
                     className="
   absolute bottom-0 left-0 w-full
   bg-gradient-to-t from-black/80 via-black/50 to-transparent
-  p-4 md:p-5
+  p-4 sm:p-5 md:p-6
   pointer-events-none
 "
                   >
                     <div className="max-w-[95%] md:max-w-[80%]">
                       <h4
                         className="text-white font-semibold 
-  text-xs sm:text-sm md:text-base lg:text-lg 
-  leading-tight"
+  text-sm sm:text-base md:text-lg lg:text-xl leading-tight"
                       >
                         {item.title}
                       </h4>
 
                       <p
                         className="text-neutral-300 
-  text-[10px] sm:text-xs md:text-sm lg:text-base 
-  mt-1 leading-snug md:leading-relaxed 
-  line-clamp-2"
+  text-xs sm:text-sm md:text-base lg:text-lg 
+  mt-1 leading-relaxed line-clamp-2"
                       >
                         {item.desc}
                       </p>
@@ -536,7 +578,7 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-prev"
             className="absolute left-4 top-1/2 -translate-y-1/2
-    w-9 h-9 flex items-center justify-center
+    w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center
     text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
     hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
@@ -546,7 +588,7 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-next"
             className="absolute right-4 top-1/2 -translate-y-1/2
-    w-9 h-9 flex items-center justify-center
+    w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center
     text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
     hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
           >
@@ -557,7 +599,7 @@ hover:scale-[1.03] transition-all duration-300
         {/* DESCRIPTION + ROLE */}
         <div
           className="mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8
-      p-6 rounded-2xl border border-neutral-800
+      p-4 sm:p-6 rounded-2xl border border-neutral-800
       bg-neutral-900/50 shadow-lg backdrop-blur-sm"
         >
           {/* LEFT — PROJECT DESCRIPTION */}
@@ -580,7 +622,8 @@ hover:scale-[1.03] transition-all duration-300
             <a
               href="https://docs.google.com/document/d/1JROX2M8LmWTzFDmfmpzff7HG2i9gyazN/edit?usp=sharing"
               target="_blank"
-              className="inline-flex mt-5 items-center gap-2 px-5 py-3 rounded-xl
+              className="inline-flex mt-5 items-center gap-2 px-6 py-3 sm:px-5 sm:py-3 
+rounded-xl min-h-[44px] text-sm sm:text-base
           border border-neutral-700 bg-neutral-900
           hover:border-emerald-500 hover:text-emerald-400 transition
           shadow-lg text-white"
@@ -634,7 +677,7 @@ hover:scale-[1.03] transition-all duration-300
 
         <div className="space-y-6">
           {/* Reflection 1 */}
-          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+          <div className="relative p-4 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
             <div
               className="absolute -top-[1px] left-0 w-full h-[2px]
     bg-gradient-to-r from-transparent via-emerald-500 to-transparent
@@ -659,7 +702,7 @@ hover:scale-[1.03] transition-all duration-300
           </div>
 
           {/* Reflection 2 */}
-          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+          <div className="relative p-4 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
             <div
               className="absolute -top-[1px] left-0 w-full h-[2px]
     bg-gradient-to-r from-transparent via-emerald-500 to-transparent
@@ -685,7 +728,7 @@ hover:scale-[1.03] transition-all duration-300
           </div>
 
           {/* Reflection 3 */}
-          <div className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
+          <div className="relative p-4 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 shadow-md">
             <div
               className="absolute -top-[1px] left-0 w-full h-[2px]
     bg-gradient-to-r from-transparent via-emerald-500 to-transparent

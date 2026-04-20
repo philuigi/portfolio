@@ -51,7 +51,7 @@ export default function Home() {
       next.style.opacity = index === maxIndex ? "0.3" : "1";
     };
 
-    next.onclick = () => {
+    next.onclick = (e) => {
       e.currentTarget.blur(); 
       const maxIndex = getMaxIndex();
       if (index < maxIndex) {
@@ -60,7 +60,7 @@ export default function Home() {
       }
     };
 
-    prev.onclick = () => {
+    prev.onclick = (e) => {
       e.currentTarget.blur(); 
       if (index > 0) {
         index--;

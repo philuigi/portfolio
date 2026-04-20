@@ -95,21 +95,21 @@ rounded-xl min-h-[44px] text-sm sm:text-base\r
     w-[92%] sm:w-[85%] md:w-auto md:max-w-2xl px-4 py-3 md:px-6 md:py-4\r
     rounded-2xl bg-gradient-to-t from-black/90 via-black/70 to-black/40\r
     backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-center text-white text-sm md:text-base transition-all duration-300`}),h.jsx("button",{id:"lightbox-close",className:`absolute top-4 right-4\r
-w-14 h-14 md:w-10 md:h-10\r
+w-10 h-10 md:w-9 md:h-9\r
 flex items-center justify-center\r
 bg-neutral-800/70 rounded-full\r
-text-neutral-300 hover:text-emerald-400 transition z-50`,children:h.jsx(Eh,{className:"w-7 h-7 md:w-5 md:h-5"})}),h.jsx("button",{id:"lightbox-prev",className:`absolute left-4 top-1/2 -translate-y-1/2\r
-w-14 h-14 md:w-10 md:h-10\r
+text-neutral-300 hover:text-emerald-400 transition z-50`,children:h.jsx(Eh,{className:"w-5 h-5 md:w-4 md:h-4"})}),h.jsx("button",{id:"lightbox-prev",className:`absolute left-4 top-1/2 -translate-y-1/2\r
+w-10 h-10 md:w-9 md:h-9\r
 flex items-center justify-center\r
 bg-neutral-800/70 rounded-full shadow-md\r
 text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500\r
-hover:text-emerald-400 transition z-50`,children:h.jsx(Do,{className:"w-6 h-6"})}),h.jsx("img",{id:"lightbox-img",className:`\r
+hover:text-emerald-400 transition z-50`,children:h.jsx(Do,{className:"w-5 h-5 md:w-4 md:h-4"})}),h.jsx("img",{id:"lightbox-img",className:`\r
   max-w-[95vw] max-h-[80vh]\r
   md:max-w-[70vw] md:max-h-[70vh]\r
   rounded-lg shadow-2xl object-contain\r
 `}),h.jsx("button",{id:"lightbox-next",className:`absolute right-4 top-1/2 -translate-y-1/2\r
-w-14 h-14 md:w-10 md:h-10\r
+w-10 h-10 md:w-9 md:h-9\r
 flex items-center justify-center\r
 bg-neutral-800/70 rounded-full shadow-md\r
 text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500\r
-hover:text-emerald-400 transition z-50`,children:h.jsx(Mo,{className:"w-6 h-6"})})]})]})}function Mh(){return h.jsx(jh,{})}mh.createRoot(document.getElementById("root")).render(h.jsx(Se.StrictMode,{children:h.jsx(Mh,{})}));
+hover:text-emerald-400 transition z-50`,children:h.jsx(Mo,{className:"w-5 h-5 md:w-4 md:h-4"})})]})]})}function Mh(){return h.jsx(jh,{})}mh.createRoot(document.getElementById("root")).render(h.jsx(Se.StrictMode,{children:h.jsx(Mh,{})}));

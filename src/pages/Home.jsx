@@ -23,6 +23,7 @@ export default function Home() {
 
     let startX = 0;
     let endX = 0;
+    let isSwiping = false;
 
     const getSlideWidth = () => {
       const slide = track.children[0];
@@ -67,17 +68,20 @@ export default function Home() {
 
     const onTouchStart = (e) => {
       startX = e.touches[0].clientX;
+      isSwiping = false;
     };
 
     const onTouchMove = (e) => {
       endX = e.touches[0].clientX;
 
       if (Math.abs(startX - endX) > 10) {
-        e.preventDefault();
+        isSwiping = true;
       }
     };
 
     const onTouchEnd = () => {
+      if (!isSwiping) return;
+
       const diff = startX - endX;
       const threshold = 50;
       const maxIndex = getMaxIndex();

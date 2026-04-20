@@ -52,6 +52,7 @@ export default function Home() {
     };
 
     next.onclick = () => {
+      e.currentTarget.blur(); 
       const maxIndex = getMaxIndex();
       if (index < maxIndex) {
         index++;
@@ -60,6 +61,7 @@ export default function Home() {
     };
 
     prev.onclick = () => {
+      e.currentTarget.blur(); 
       if (index > 0) {
         index--;
         update();

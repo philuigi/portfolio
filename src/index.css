@@ -34,3 +34,8 @@ body {
 .animate-fadeIn {
   animation: fadeIn 1.1s ease-out forwards;
 }
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}

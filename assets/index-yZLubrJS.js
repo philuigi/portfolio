@@ -69,11 +69,11 @@ hover:scale-[1.03] transition-all duration-300
   text-sm sm:text-base md:text-lg lg:text-xl leading-tight`,children:m.title}),h.jsx("p",{className:`text-neutral-300 \r
   text-xs sm:text-sm md:text-base lg:text-lg \r
   mt-1 leading-relaxed line-clamp-2`,children:m.desc})]})})]},j)})}),h.jsx("button",{id:"carousel-prev",className:`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2\r
-  w-14 h-14 md:w-10 md:h-10\r
+  w-10 h-10 md:w-9 md:h-9\r
   flex items-center justify-center\r
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
   hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50`,children:h.jsx(Do,{className:"w-7 h-7 md:w-5 md:h-5"})}),h.jsx("button",{id:"carousel-next",className:`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2\r
-  w-14 h-14 md:w-10 md:h-10\r
+  w-10 h-10 md:w-9 md:h-9\r
   flex items-center justify-center\r
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md\r
   hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50`,children:h.jsx(Mo,{className:"w-7 h-7 md:w-5 md:h-5"})})]}),h.jsxs("div",{className:`mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8\r

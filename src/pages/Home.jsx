@@ -582,23 +582,23 @@ hover:scale-[1.03] transition-all duration-300
           <button
             id="carousel-prev"
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2
-  w-12 h-12 sm:w-10 sm:h-10
+  w-14 h-14 md:w-10 md:h-10
   flex items-center justify-center
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
+  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50"
           >
-            <HiOutlineChevronLeft className="w-6 h-6 sm:w-5 sm:h-5" />
+            <HiOutlineChevronLeft className="w-7 h-7 md:w-5 md:h-5" />
           </button>
 
           <button
             id="carousel-next"
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2
-  w-12 h-12 sm:w-10 sm:h-10
+  w-14 h-14 md:w-10 md:h-10
   flex items-center justify-center
   text-neutral-300 bg-neutral-800/70 rounded-full shadow-md
-  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition"
+  hover:bg-neutral-900 hover:border hover:border-emerald-500 hover:text-emerald-400 transition z-50"
           >
-            <HiOutlineChevronRight className="w-6 h-6 sm:w-5 sm:h-5" />
+            <HiOutlineChevronRight className="w-7 h-7 md:w-5 md:h-5" />
           </button>
         </div>
 
@@ -775,22 +775,23 @@ rounded-xl min-h-[44px] text-sm sm:text-base
         {/* Close */}
         <button
           id="lightbox-close"
-          className="absolute top-4 right-4 sm:top-6 sm:right-6
-  w-12 h-12 sm:w-10 sm:h-10
-  flex items-center justify-center
-  bg-neutral-800/70 rounded-full shadow-md
-  text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500
-  hover:text-emerald-400 transition active:scale-95"
+          className="absolute top-4 right-4
+w-14 h-14 md:w-10 md:h-10
+flex items-center justify-center
+bg-neutral-800/70 rounded-full
+text-neutral-300 hover:text-emerald-400 transition z-50"
         >
-          <HiOutlineX className="w-6 h-6 sm:w-5 sm:h-5" />
+          <HiOutlineX className="w-7 h-7 md:w-5 md:h-5" />
         </button>
         {/* Prev */}
         <button
           id="lightbox-prev"
-          className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center justify-center 
-  w-10 h-10 bg-neutral-800/70 rounded-full shadow-md
-  text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 
-  hover:text-emerald-400 transition"
+          className="absolute left-4 top-1/2 -translate-y-1/2
+w-14 h-14 md:w-10 md:h-10
+flex items-center justify-center
+bg-neutral-800/70 rounded-full shadow-md
+text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500
+hover:text-emerald-400 transition z-50"
         >
           <HiOutlineChevronLeft className="w-6 h-6" />
         </button>
@@ -807,10 +808,12 @@ rounded-xl min-h-[44px] text-sm sm:text-base
         {/* Next */}
         <button
           id="lightbox-next"
-          className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center justify-center 
-  w-10 h-10 bg-neutral-800/70 rounded-full shadow-md
-  text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500 
-  hover:text-emerald-400 transition"
+          className="absolute right-4 top-1/2 -translate-y-1/2
+w-14 h-14 md:w-10 md:h-10
+flex items-center justify-center
+bg-neutral-800/70 rounded-full shadow-md
+text-neutral-300 hover:bg-neutral-900 hover:border hover:border-emerald-500
+hover:text-emerald-400 transition z-50"
         >
           <HiOutlineChevronRight className="w-6 h-6" />
         </button>

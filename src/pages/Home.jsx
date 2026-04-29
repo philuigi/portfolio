@@ -330,7 +330,7 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap gap-3">
               {[
                 "Full-Stack Development",
-                "Django (Python_)",
+                "Django (Python)",
                 "Laravel (PHP)",
                 "ASP.NET Core (C#)",
                 "REST APIs",

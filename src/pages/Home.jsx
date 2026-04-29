@@ -308,21 +308,21 @@ export default function Home() {
           <div className="md:col-span-9">
             <div className="space-y-5 text-neutral-300 leading-relaxed text-lg md:text-xl">
               <p>
-                I’m Philip Luigi Garcia, a BS Information Systems student who
-                enjoys building clean, modern, and efficient web applications.
+                I’m Philip Luigi Garcia, a full-stack developer with experience
+                in building scalable web applications using Django, Laravel, and
+                ASP.NET Core.
               </p>
 
               <p>
-                I have an interest in full-stack development, working with both
-                front-end interfaces and back-end systems to create functional
-                and user-friendly solutions.
+                I specialize in developing database-driven systems, integrating
+                REST APIs, and working with real-time data, including IoT-based
+                applications.
               </p>
 
               <p>
-                I enjoy designing intuitive user experiences, developing
-                responsive interfaces, and bringing ideas to life through code.
-                I’m continuously learning new tools and frameworks to improve
-                and grow as a developer.
+                I contributed to the development of a smart farming platform
+                with capabilities like search, filtering, and real-time sensor
+                data integration that manages more than 14,000 records.
               </p>
             </div>
 
@@ -330,12 +330,14 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap gap-3">
               {[
                 "Full-Stack Development",
-                "Laravel + Inertia",
-                "Python/Django",
+                "Django (Python_)",
+                "Laravel (PHP)",
+                "ASP.NET Core (C#)",
+                "REST APIs",
                 "React",
-                "Tailwind",
-                "TypeScript",
-                "Next.js",
+                "MySQL / PostgreSQL",
+                "React",
+                "Tailwind CSS"
               ].map((b) => (
                 <span
                   key={b}
